@@ -1,0 +1,33 @@
+
+
+
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+
+    --bg      : #000000;
+    --bg-1    : hsl(0, 0%, 3%);
+    --bg-2    : #ffffff;
+
+    --text    : #ffffff;
+    --text-1  : rgb(161 161 161);
+    --text-rev: #000000;
+
+    --rust-text   : hsl(38, 83%, 60%);
+    --rust-bg   : hsla(38, 100%, 50%, 0.1);
+
+    --shell-text   : hsl(277, 97%, 70%);
+    --shell-bg   : hsla(277, 100%, 60%, 0.1);
+
+    --c-text   : hsl(201, 86%, 61%);
+    --c-bg   : hsla(201, 100%, 50%, 0.1);
+}
+
+
+
+
+
+
+
