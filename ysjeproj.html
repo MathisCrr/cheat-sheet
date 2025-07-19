@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../builder/rsc/base.css">
+    <link rel="stylesheet" href="../builder/rsc/page.css">
+    <link rel="stylesheet" href="../builder/rsc/pygments.css" >
+</head>
+<script>
+    function goto(id){
+        window.location.href = "/" + id + ".html";
+    }
+</script>
+<body>
+<section id="brand" onclick="window.location.href = '/index.html'"><h1>cheat-sheet.com</h1></section>
+<nav>
+    <h1>shell</h1>
+    <h1>:</h1>
+    <h1>flow control</h1>
+</nav>
+<main>
+    <h1>if elif else</h1>
+<p>Run a code block based on one or more <em>conditions</em></p>
+<div class="code-block">
+          <div class="code-header">
+            <span class="language-label">shell</span>
+            <button class="copy-button"><img src="../builder/rsc/copy.svg"></button>
+          </div>
+          <pre><code><span class="k">if</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span>condition
+<span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;condition is true&quot;</span>
+<span class="k">elif</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span>other_condition
+<span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;other_condition is true&quot;</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;condition and other_condition is false&quot;</span>
+<span class="k">fi</span>
+</code></pre></div>
+
+<hr />
+<h1>Case</h1>
+<p>Run a code block depending on which pattern matches the value of a variable.</p>
+<div class="code-block">
+          <div class="code-header">
+            <span class="language-label">shell</span>
+            <button class="copy-button"><img src="../builder/rsc/copy.svg"></button>
+          </div>
+          <pre><code><span class="k">case</span><span class="w"> </span>var_to_test<span class="w"> </span><span class="k">in</span>
+<span class="w">  </span>value<span class="o">)</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;var_to_test equal &#39;value&#39;&quot;</span>
+<span class="w">    </span><span class="p">;;</span>
+<span class="w">  </span>value1<span class="w"> </span><span class="p">|</span><span class="w"> </span>value2<span class="o">)</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;var_to_test equal &#39;value1&#39; or &#39;value2&#39;&quot;</span>
+<span class="w">    </span><span class="p">;;</span>
+<span class="w">  </span>*index.md<span class="o">)</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;var_to_test equal &#39;*test&#39; glob motif&quot;</span>
+<span class="w">    </span><span class="p">;;</span>
+<span class="w">  </span>*<span class="o">)</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;var_to_test match nothing above&quot;</span>
+<span class="w">    </span><span class="p">;;</span>
+<span class="k">esac</span>
+</code></pre></div>
+
+<h1>While (loop)</h1>
+<p>Repeatedly run a code block while the <em>condition</em> is true.</p>
+<div class="code-block">
+          <div class="code-header">
+            <span class="language-label">shell</span>
+            <button class="copy-button"><img src="../builder/rsc/copy.svg"></button>
+          </div>
+          <pre><code><span class="c1"># condition</span>
+<span class="k">while</span><span class="w"> </span>condition
+<span class="k">do</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;execution block&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
+
+<div class="code-block">
+          <div class="code-header">
+            <span class="language-label">shell</span>
+            <button class="copy-button"><img src="../builder/rsc/copy.svg"></button>
+          </div>
+          <pre><code><span class="c1"># lopping over command return</span>
+<span class="k">$(</span>ls<span class="w"> </span>.<span class="k">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>line
+<span class="k">do</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Line: </span><span class="nv">$line</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
+
+<div class="code-block">
+          <div class="code-header">
+            <span class="language-label">shell</span>
+            <button class="copy-button"><img src="../builder/rsc/copy.svg"></button>
+          </div>
+          <pre><code><span class="c1"># looping over file content</span>
+<span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>line
+<span class="k">do</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Line: </span><span class="nv">$line</span><span class="s2">&quot;</span>
+<span class="k">done</span><span class="w"> </span>&lt;<span class="w"> </span>file.txt
+</code></pre></div>
+
+<h1>Until (loop)</h1>
+<p>Repeatedly run a code block until the condition is true.</p>
+<div class="code-block">
+          <div class="code-header">
+            <span class="language-label">shell</span>
+            <button class="copy-button"><img src="../builder/rsc/copy.svg"></button>
+          </div>
+          <pre><code><span class="k">until</span><span class="w"> </span>condition
+<span class="k">do</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;execution block&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
+
+<h1>for (loop)</h1>
+<div class="code-block">
+          <div class="code-header">
+            <span class="language-label">shell</span>
+            <button class="copy-button"><img src="../builder/rsc/copy.svg"></button>
+          </div>
+          <pre><code><span class="c1"># from static list</span>
+<span class="k">for</span><span class="w"> </span>item<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>b<span class="w"> </span>c<span class="w"> </span>d
+<span class="k">do</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;execution block&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
+
+<div class="code-block">
+          <div class="code-header">
+            <span class="language-label">shell</span>
+            <button class="copy-button"><img src="../builder/rsc/copy.svg"></button>
+          </div>
+          <pre><code><span class="c1"># from glob motif</span>
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>*.txt
+<span class="k">do</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;txt file: </span><span class="nv">$file</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
+
+<div class="code-block">
+          <div class="code-header">
+            <span class="language-label">shell</span>
+            <button class="copy-button"><img src="../builder/rsc/copy.svg"></button>
+          </div>
+          <pre><code><span class="c1"># from command</span>
+<span class="k">for</span><span class="w"> </span>user<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>ls<span class="w"> </span>.<span class="k">)</span>
+<span class="k">do</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello </span><span class="nv">$user</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
+
+<h1>Loops Control</h1>
+<div class="code-block">
+          <div class="code-header">
+            <span class="language-label">shell</span>
+            <button class="copy-button"><img src="../builder/rsc/copy.svg"></button>
+          </div>
+          <pre><code><span class="nv">IFS</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="w"> </span><span class="c1"># redefined the char separator to &#39;:&#39; </span>
+<span class="o">{</span><span class="k">while</span>/until/for<span class="o">}</span>
+<span class="k">do</span>
+<span class="w">  </span><span class="k">continue</span><span class="w"> </span><span class="c1"># skip to the next interation </span>
+<span class="w">  </span><span class="k">break</span><span class="w">    </span><span class="c1"># exit the loop</span>
+<span class="k">done</span>
+</code></pre></div>
+</main>
+</body>

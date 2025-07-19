@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../builder/rsc/base.css">
+    <link rel="stylesheet" href="../builder/rsc/index.css">
+    <link rel="stylesheet" href="../builder/rsc/pygments.css" >
+</head>
+<script>
+    function goto(id){
+        window.location.href = "/" + id;
+    }
+</script>
+<body>
+    <section id="brand"><h1>cheat-sheet.tech</h1></section>
+    <nav>
+    <div id="category-cont">
+        <input type="Search" placeholder="search"/>
+    </div>
+    </nav>
+    <main>
+        <div onclick="goto(id)">
+            <p class="category">rust</p>
+            <p>:</p>
+            <p class="name">operators</p>
+        </div>
+        <div onclick="goto(id)">
+            <p class="category">rust</p>
+            <p>:</p>
+            <p class="name">loops</p>
+        </div>
+        <div onclick="goto(id)">
+            <p class="category">kubernetes</p>
+            <p>:</p>
+            <p class="name">test</p>
+        </div>
+        <div onclick="goto(id)">
+            <p class="category">c</p>
+            <p>:</p>
+            <p class="name">test with a long name test</p>
+        </div>
+        <div onclick="goto(id)">
+            <p class="category">shell</p>
+            <p>:</p>
+            <p class="name">flow control</p>
+        </div>
+    </main>
+</body>
