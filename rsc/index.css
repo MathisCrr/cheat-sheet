@@ -1,105 +1,155 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap');
-
-h1{
-    font-size: 1.8rem;
+*{
+    color: var(--text-2);
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
-main > div{
-    transition: border-color 0.3s;
+:root{
+    font-size: 97%;
+}
+
+body {
+    position: relative;
+    background-color: var(--bg-1);
+
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    scrollbar-color: var(--grey-1) transparent;
+    scrollbar-width: auto;
+
+    min-height: 100dvh;
+}
+
+
+img {
+    height: 1.25rem;
+}
+
+header{
+    padding: 15px 20px 0 20px;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    width: 500px;
+    a{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
 
-
-    p.category, :nth-child(2){
-        color: var(--text-1);
+        img{
+            height: 1rem;
+            display: block;
+        }
+        p{
+            font-size: 0.9em;
+            font-weight: 600;
+            color: var(--text-1);
+        }
     }
-    :nth-child(2){
-        padding-left: 3px;
-        padding-right: 15px;
-    }
-    p.name{
-        transition-duration: 0.3s;
-        font-weight: 500;
-    }
-    border-radius: 12px;
-    border: 1px solid #444444;
-    padding: 10px 20px;
-
-    background-color: hsl(0 0 3%);
-    margin: 10px auto;
-}
-
-main > div:hover{
-    cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.41);
-
-    p.name{
-        color: white;
-    }
-}
-
-p{
-    color: var(--text-1);
-}
-
-button :hover{
-    cursor: pointer;
-}
-
-body{
-    font-family: "Chakra Petch", sans-serif !important;
-    background-color: var(--bg);
-    color: var(--text);
-    padding: 0 20px;
-}
-
-input{
-    all: unset;
-    padding: 8px 8px;
-    color: var(--text);
-    background-color: #1A1A1A;
-    border-radius: 10px;
-    border-color: transparent;
-    outline: none;
-}
-input:hover{
-    border-color: grey;
-}
-
-
-nav{
-    width: 50%;
-    max-width: 500px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
-    margin: 100px auto 50px auto;
-    input{
-        width: 300px;
-        margin: 0 auto;
-        font-size: 1em;
-        padding-left: 15px;
-        border: 1px solid transparent;
-    }
-    input:hover{
-        border-color: transparent;
-    }
-    input:focus{
-        border-color: rgba(255, 255, 255, 0.28);
+    >div#menu{
+      margin-left: auto;
     }
 }
 
 
-section#brand{
-    margin-top: 50px;
-    h1{
-        text-align: center;
-        color: #fdfdfd;
+.hide{
+    display: none !important;
+}
+
+
+
+img.favorite{
+    margin-right: 1.25rem;
+    display: block;
+    transition-duration: 0.2s;
+
+    opacity: 0.3;
+
+    &:hover,&.isfav{
+        filter: var(--icon-brightness);
+        opacity: 1;
     }
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+
+#menu{
+    margin-left: 0;
+    position: relative;
+
+    &.focus {
+        div.menu{
+            display: flex !important;
+        }
+    }
+
+    >img{
+        margin-left: auto;
+        transition: filter 0.3s;
+        display: block;
+        &:hover{
+            cursor: pointer;
+            filter: var(--icon-brightness);
+        }
+    }
+
+    div.menu{
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0px;
+        flex-direction: column;
+        width: max-content;
+        background-color: var(--bg-popup-1);
+        backdrop-filter: blur(20px);
+        box-shadow: var(--shadow-popup);
+        border: 0.02rem solid var(--border-1);
+        padding: 0.4rem;
+        border-radius: 0.7rem;
+        z-index: 10;
+
+        hr{
+            border: none;
+            height: 1px;
+            background-color: var(--border-1);
+            width: 90%;
+            margin: 5px auto;
+        }
+
+
+        span{
+            display: flex;
+            flex-direction: row;
+            min-width: fit-content;
+            align-items: center;
+            padding: 0.5rem 0.7rem;
+            border-radius: 0.4rem;
+            gap: 1rem;
+            img{
+                filter: var(--icon-brightness);
+                height: 1.4rem;
+                display: block;
+            }
+            &:hover{
+                background-color: var(--bg-popup-2);
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+html{
+    scrollbar-width: none;
+}
+
+.pulse{
+    animation: pulse 0.3s ease;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.8);}
+    100% { transform: scale(1); }
 }

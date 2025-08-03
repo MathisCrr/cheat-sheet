@@ -2,47 +2,61 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="rsc/dark.css">
+    <title>cheat-sheet</title>
+    <link rel="stylesheet" href="rsc/dark.css" id="style-ui-dark"  disabled>
+    <link rel="stylesheet" href="rsc/light.css" id="style-ui-light" disabled>
+
+    <link rel="stylesheet" href="rsc/home.css">
     <link rel="stylesheet" href="rsc/index.css">
+
+    <script src="rsc/index.js"></script>
+    <script src="../dist/indexation.js"></script>
+
 </head>
 <script>
-    function goto(id){
-        window.location.href = id + ".html";
-    }
+    document.addEventListener("DOMContentLoaded", ()=>{
+        localStorage.setItem("ui-theme", localStorage.getItem("ui-theme") || 'dark');
+        toggle_ui();toggle_ui();
+        update_list();
+    })
 </script>
-<body>
-    <section id="brand"><h1>cheat-sheet.tech</h1></section>
+<body onclick="document.getElementById('menu').classList.remove('focus')">
+    <header>
+        <a style="text-decoration: none" href="https://cheat-sheet.tech">
+            <img src="../../builder/rsc/assets/logo.svg" alt="logo">
+            <p>cheat-sheet.tech</p>
+        </a>
+        <div id="menu" onclick="event.stopPropagation();this.classList.add('focus')">
+            <img src="../../builder/rsc/assets/menu-dots.svg">
+            <div class="menu">
+                <span data-theme="light" class="hide" onclick="toggle_ui(this)"><img src="../../builder/rsc/assets/bulb-on.svg"><p>Turn on the light</p></span>
+                <span data-theme="dark"  class="hide" onclick="toggle_ui(this)"><img src="../../builder/rsc/assets/bulb-off.svg"><p>Turn off the light</p></span>
+                <a href="https://github.com/eloi-menaud/cheat-sheet?tab=readme-ov-file#add-a-cheat-sheet" style="all: unset">
+                    <span>
+                        <img src="../../builder/rsc/assets/add.svg"><p>Add a cheat sheet</p>
+                    </span>
+                </a>
+                <a href="https://github.com/eloi-menaud/cheat-sheet" style="all: unset">
+                    <span>
+                        <img src="../../builder/rsc/assets/github.svg"><p>Source</p>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+
     <nav>
-    <div id="category-cont">
-        <input type="Search" placeholder="search"/>
-    </div>
+        <input id="title" type="Search" placeholder="Title" oninput="update_list()"/>
+        <input id="tech" type="Search" placeholder="Tech" oninput="update_list()"/>
     </nav>
+
+    <div id="result-separator">
+        <p>No result</p>
+    </div>
+
     <main>
-        <div onclick="goto('f12o6cul')">
-            <p class="category">rust</p>
-            <p>:</p>
-            <p class="name">operators</p>
-        </div>
-        <div onclick="goto('99vvxf5d')">
-            <p class="category">rust</p>
-            <p>:</p>
-            <p class="name">loops</p>
-        </div>
-        <div onclick="goto('akdjfier')">
-            <p class="category">kubernetes</p>
-            <p>:</p>
-            <p class="name">test</p>
-        </div>
-        <div onclick="goto('asdfgjhk')">
-            <p class="category">c</p>
-            <p>:</p>
-            <p class="name">test with a long name test</p>
-        </div>
-        <div onclick="goto('ysjeproj')">
-            <p class="category">shell</p>
-            <p>:</p>
-            <p class="name">flow control</p>
-        </div>
     </main>
+<footer></footer>
 </body>

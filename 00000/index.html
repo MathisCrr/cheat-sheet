@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../rsc/dark.css" id="style-ui-dark"  disabled>
+    <link rel="stylesheet" href="../rsc/light.css" id="style-ui-light" disabled>
+
+    <script src="../rsc/index.js"></script>
+
+    <link rel="stylesheet" href="../rsc/index.css">
+    <link rel="stylesheet" href="../rsc/page.css">
+</head>
+<script>
+    document.addEventListener("DOMContentLoaded", ()=>{
+        console.log("loaded")
+        init_code_copy_event()
+        if (hasTouch()) document.body.classList.remove('has-hover')
+
+        localStorage.setItem("ui-theme", localStorage.getItem("ui-theme") || 'dark')
+        toggle_ui();toggle_ui();
+
+        let raw_favs = localStorage.getItem("favs")
+        if ((raw_favs ? raw_favs.split(",") : []).includes(document.body.id)){
+            document.querySelector("img.favorite").classList.add("isfav")
+        }
+    })
+</script>
+<body class="has-hover" onclick="document.getElementById('menu').classList.remove('focus')" id="00000">
+
+<header>
+    <a style="text-decoration: none" href="https://cheat-sheet.tech">
+        <img src="../rsc/assets/logo.svg" alt="logo">
+        <p>cheat-sheet.tech</p>
+    </a>
+    <div id="menu" onclick="event.stopPropagation();this.classList.add('focus')">
+        <img src="../rsc/assets/menu-dots.svg">
+        <div class="menu">
+            <span data-theme="light" class="hide" onclick="toggle_ui(this)"><img src="../rsc/assets/bulb-on.svg"><p>Turn on the light</p></span>
+            <span data-theme="dark"  class="hide" onclick="toggle_ui(this)"><img src="../rsc/assets/bulb-off.svg"><p>Turn off the light</p></span>
+            <a href="https://github.com/eloi-menaud/cheat-sheet?tab=readme-ov-file#add-a-cheat-sheet" style="all: unset">
+                <span>
+                    <img src="../rsc/assets/add.svg"><p>Add a cheat sheet</p>
+                </span>
+            </a>
+            <hr>
+            <a href="https://github.com/eloi-menaud/cheat-sheet/edit/main/pages/Shell/A Test/00000.md" style="all: unset">
+                <span>
+                    <img src="../rsc/assets/edit.svg"><p>Edit this cheat sheet</p>
+                </span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<nav>
+    <h1 title="title">A Test</h1>
+    <p id="tech" title="tech">Shell<p>
+    <img class="favorite" src="../rsc/assets/favorite.svg" title="favorite" onclick="toggle_fav(this,'00000')">
+</nav>
+<main>
+    <p>Lorem ipsum <strong>dolor</strong> sit amet, consectetur <em>adipiscing</em> elit. Sed non risus. <code>Suspendisse $SUREND; abcd001</code>  lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras <a href="">elementum ultrices</a> diam.</p>
+<h1>test</h1>
+<h2>h2</h2>
+<h3>h3</h3>
+<h4>h4</h4>
+<p>Lorem ipsum <strong>dolor</strong> sit amet, consectetur <em>adipiscing</em> elit. Sed non risus. Suspendisse  lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.</p>
+<ol>
+<li>test</li>
+<li>test</li>
+<li>test</li>
+</ol>
+<h4>And should follow the folwwing rules :</h4>
+<ul>
+<li>el</li>
+<li>el<ul>
+<li>subel<ul>
+<li>sub sub<ul>
+<li>sub sub sub</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>sub el</li>
+<li>sub el</li>
+</ul>
+</li>
+<li>el</li>
+<li>el</li>
+</ul>
+<hr />
+<p><code>code bloc onleine</code></p>
+<div class="code-block">
+    <div class="code-header">
+        <p class="language">python</p>
+        <div><img class="copy" src="../rsc/assets/copy.svg"></div>
+    </div>
+    <div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">dump_args</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="s2">&quot;This decorator dumps out the arguments passed to a function before calling it&quot;</span>
+    <span class="n">argnames</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">func_code</span><span class="o">.</span><span class="n">co_varnames</span><span class="p">[:</span><span class="n">func</span><span class="o">.</span><span class="n">func_code</span><span class="o">.</span><span class="n">co_argcount</span><span class="p">]</span>
+    <span class="n">fname</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">func_name</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">echo_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">entry</span>
+            <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">argnames</span><span class="p">,</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">echo_func</span>
+
+<span class="nd">@dump_args</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f1</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>
+    <span class="nb">print</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span>
+
+<span class="n">f1</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">precondition</span><span class="p">(</span><span class="n">precondition</span><span class="p">,</span> <span class="n">use_conditions</span><span class="o">=</span><span class="n">DEFAULT_ON</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">conditions</span><span class="p">(</span><span class="n">precondition</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">use_conditions</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">postcondition</span><span class="p">(</span><span class="n">postcondition</span><span class="p">,</span> <span class="n">use_conditions</span><span class="o">=</span><span class="n">DEFAULT_ON</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">conditions</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">postcondition</span><span class="p">,</span> <span class="n">use_conditions</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">conditions</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;__precondition&#39;</span><span class="p">,</span> <span class="s1">&#39;__postcondition&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pre</span><span class="p">,</span> <span class="n">post</span><span class="p">,</span> <span class="n">use_conditions</span><span class="o">=</span><span class="n">DEFAULT_ON</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">use_conditions</span><span class="p">:</span>
+            <span class="n">pre</span><span class="p">,</span> <span class="n">post</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__precondition</span>  <span class="o">=</span> <span class="n">pre</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__postcondition</span> <span class="o">=</span> <span class="n">post</span>
+</pre></div>
+
+</div>
+
+<div class="code-block">
+    <div class="code-header">
+        <p class="language">shell</p>
+        <div><img class="copy" src="../rsc/assets/copy.svg"></div>
+    </div>
+    <div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="nb">test</span>
+</pre></div>
+
+</div>
+
+<p><a href="https://google.com">link</a></p>
+</main>
+</body>

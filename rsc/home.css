@@ -1,0 +1,108 @@
+
+*{
+    color: var(--text-2);
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+:root{
+    font-size: 97%;
+}
+img {
+    height: 1.25rem;
+}
+
+input{
+    all: unset;
+    border: 1px solid var(--border-1);
+    border-radius: 8px;
+    padding: 0.4rem;
+    text-indent: 0.5rem;
+    &::placeholder{
+        color: var(--grey-2);
+    }
+    &:focus{
+        border-color: var(--border-2);
+    }
+}
+
+main,nav,#result-separator{
+    width: 70%;
+    max-width: 800px;
+    min-width: 500px;
+    margin: 0 auto;
+}
+
+nav{
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    #title{
+        width: 70%;
+        &.error{
+            border-color: var(--error);
+        }
+    }
+    #tech{
+        width:30%;
+        &.error{
+            border-color: var(--error);
+        }
+    }
+}
+
+#result-separator{
+    height: 1px;
+    margin-top: 4rem;
+    margin-bottom: 2.5rem;
+
+    background-color: var(--border-1);
+    position: relative;
+    padding: 0;
+
+    p{
+        color: var(--text-1);
+        font-size: 0.8rem;
+        background-color: var(--bg-1);
+        padding: 0 0.5rem;
+        transform: translateY(-50%);
+        position: absolute;
+        top: 0;
+        left: 1.1rem;
+    }
+}
+
+main>div{
+    padding: 0.5rem 1.1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 0.5rem;
+    &:hover{
+        background-color: var(--bg-2);
+        cursor: pointer;
+    }
+    p.title{
+        font-size: 1.1rem;
+    }
+    p.tech{
+        margin-left: auto;
+        border: 1px solid var(--border-1);
+        background-color: var(--bg-1);
+        padding: 0.25rem 0.75rem;
+        border-radius: 5px;
+        font-size: 0.85em;
+    }
+    mark{
+        background-color: transparent;
+        color: var(--main);
+    }
+    img{
+        margin-left: 1rem;
+    }
+}
+
