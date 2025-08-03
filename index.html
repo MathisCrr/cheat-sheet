@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="rsc/index.css">
 
     <script src="rsc/index.js"></script>
-    <script src="../dist/indexation.js"></script>
+    <script src="indexation.js"></script>
 
 </head>
 <script>
@@ -23,22 +23,22 @@
 <body onclick="document.getElementById('menu').classList.remove('focus')">
     <header>
         <a style="text-decoration: none" href="https://cheat-sheet.tech">
-            <img src="../../builder/rsc/assets/logo.svg" alt="logo">
+            <img src="rsc/assets/logo.svg" alt="logo">
             <p>cheat-sheet.tech</p>
         </a>
         <div id="menu" onclick="event.stopPropagation();this.classList.add('focus')">
-            <img src="../../builder/rsc/assets/menu-dots.svg">
+            <img src="rsc/assets/menu-dots.svg">
             <div class="menu">
-                <span data-theme="light" class="hide" onclick="toggle_ui(this)"><img src="../../builder/rsc/assets/bulb-on.svg"><p>Turn on the light</p></span>
-                <span data-theme="dark"  class="hide" onclick="toggle_ui(this)"><img src="../../builder/rsc/assets/bulb-off.svg"><p>Turn off the light</p></span>
+                <span data-theme="light" class="hide" onclick="toggle_ui(this)"><img src="rsc/assets/bulb-on.svg"><p>Turn on the light</p></span>
+                <span data-theme="dark"  class="hide" onclick="toggle_ui(this)"><img src="rsc/assets/bulb-off.svg"><p>Turn off the light</p></span>
                 <a href="https://github.com/eloi-menaud/cheat-sheet?tab=readme-ov-file#add-a-cheat-sheet" style="all: unset">
                     <span>
-                        <img src="../../builder/rsc/assets/add.svg"><p>Add a cheat sheet</p>
+                        <img src="rsc/assets/add.svg"><p>Add a cheat sheet</p>
                     </span>
                 </a>
                 <a href="https://github.com/eloi-menaud/cheat-sheet" style="all: unset">
                     <span>
-                        <img src="../../builder/rsc/assets/github.svg"><p>Source</p>
+                        <img src="rsc/assets/github.svg"><p>Source</p>
                     </span>
                 </a>
             </div>
@@ -49,7 +49,7 @@
 
     <nav>
         <input id="title" type="Search" placeholder="Title" oninput="update_list()"/>
-        <input id="tech" type="Search" placeholder="Tech" oninput="update_list()"/>
+        <input id="tech"  type="Search" placeholder="Tech"  oninput="update_list()"/>
     </nav>
 
     <div id="result-separator">
