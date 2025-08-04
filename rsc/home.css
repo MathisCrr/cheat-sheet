@@ -15,8 +15,8 @@ img {
 
 input{
     all: unset;
-    border: 1px solid var(--border-1);
-    border-radius: 8px;
+    border: 0.1rem solid var(--border-1);
+    border-radius: 0.5rem;
     padding: 0.4rem;
     text-indent: 0.5rem;
     &::placeholder{
@@ -82,6 +82,7 @@ main>a{
     flex-direction: row;
     align-items: center;
     border-radius: 0.5rem;
+    text-decoration: none;
     &:hover{
         background-color: var(--bg-2);
         cursor: pointer;
@@ -105,4 +106,25 @@ main>a{
         margin-left: 1rem;
     }
 }
+
+@media screen and (max-width: 900px) {
+    header{
+        width: 100%;
+    }
+    nav,main,#result-separator{
+        width: 90% !important;
+        min-width: 0px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    :root{
+        font-size: 70% !important;
+    }
+    nav,main,#result-separator{
+        width: 90% !important;
+        min-width: 0px;
+    }
+}
+
 
