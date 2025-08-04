@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>cheat-sheet</title>
+
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link rel="stylesheet" href="../rsc/dark.css" id="style-ui-dark"  disabled>
+    <link rel="stylesheet" href="../rsc/light.css" id="style-ui-light" disabled>
+
+    <script src="../rsc/index.js"></script>
+
+    <link rel="stylesheet" href="../rsc/index.css">
+    <link rel="stylesheet" href="../rsc/page.css">
+</head>
+<script>
+    document.addEventListener("DOMContentLoaded", ()=>{
+        console.log("loaded")
+        init_code_copy_event()
+        if (hasTouch()) document.body.classList.remove('has-hover')
+
+        localStorage.setItem("ui-theme", localStorage.getItem("ui-theme") || 'dark')
+        toggle_ui();toggle_ui();
+
+        let raw_favs = localStorage.getItem("favs")
+        if ((raw_favs ? raw_favs.split(",") : []).includes(document.body.id)){
+            document.querySelector("img.favorite").classList.add("isfav")
+        }
+    })
+</script>
+<body class="has-hover" onclick="document.getElementById('menu').classList.remove('focus')" id="00001">
+
+<header>
+    <a style="text-decoration: none" href="https://cheat-sheet.tech">
+        <img src="../rsc/assets/logo.svg" alt="logo">
+        <p>cheat-sheet.tech</p>
+    </a>
+    <div id="menu" onclick="event.stopPropagation();this.classList.add('focus')">
+        <img src="../rsc/assets/menu-dots.svg">
+        <div class="menu">
+            <span data-theme="light" class="hide" onclick="toggle_ui(this)"><img src="../rsc/assets/bulb-on.svg"><p>Turn on the light</p></span>
+            <span data-theme="dark"  class="hide" onclick="toggle_ui(this)"><img src="../rsc/assets/bulb-off.svg"><p>Turn off the light</p></span>
+            <a href="https://github.com/eloi-menaud/cheat-sheet/tree/main?tab=readme-ov-file#-add-a-cheat-sheet" style="all: unset">
+                <span>
+                    <img src="../rsc/assets/add.svg"><p>Add a cheat sheet</p>
+                </span>
+            </a>
+            <hr>
+            <a href="https://github.com/eloi-menaud/cheat-sheet/edit/main/pages/Yaml/Syntaxe/00001.md" style="all: unset">
+                <span>
+                    <img src="../rsc/assets/edit.svg"><p>Edit this cheat sheet</p>
+                </span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<nav>
+    <h1 title="title">Syntaxe</h1>
+    <p id="tech" title="tech">Yaml<p>
+    <img class="favorite" src="../rsc/assets/favorite.svg" title="favorite" onclick="toggle_fav(this,'00001')">
+</nav>
+<main>
+    <p><a href="https://yaml.org/spec/1.2.2/">Official YAML Specifications</a></p>
+<div class="code-block">
+    <div class="code-header">
+        <p class="language">yaml</p>
+        <div><img class="copy" src="../rsc/assets/copy.svg"></div>
+    </div>
+    <div class="highlight"><pre><span></span><span class="nt">object</span><span class="p">:</span>
+
+<span class="w">  </span><span class="c1"># literal string</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">a string</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;a</span><span class="nv"> </span><span class="s">string&quot;</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;a</span><span class="nv"> </span><span class="s">string&#39;</span>
+
+<span class="w">  </span><span class="c1"># literal number</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"> </span><span class="c1"># int</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.5</span><span class="w"> </span><span class="c1"># float</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1e+10</span><span class="w"> </span><span class="c1"># exponential form</span>
+
+<span class="w">  </span><span class="c1"># literal boolean</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">  </span><span class="c1"># literal dates (ISO 8601)</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2001-01-23 10:00:00</span>
+
+<span class="w">  </span><span class="c1"># literal null</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+
+<span class="w">  </span><span class="c1"># type casting</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="kt">!!float</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"> </span><span class="c1"># 10.0</span>
+<span class="w">  </span><span class="nt">gpa</span><span class="p">:</span><span class="w"> </span><span class="kt">!!str</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.5</span><span class="w"> </span><span class="c1"># &quot;3.5&quot;</span>
+
+
+
+<span class="w">  </span><span class="c1"># list of items</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">element 1</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">element 2</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;element</span><span class="nv"> </span><span class="s">1&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;element</span><span class="nv"> </span><span class="s">2&quot;</span><span class="p p-Indicator">]</span>
+
+<span class="w">  </span><span class="c1"># list of objects</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">b</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">a</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="nt"> b</span><span class="p">:</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span>
+<span class="w">    </span><span class="nt">a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">b</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+
+
+
+<span class="w">  </span><span class="c1"># newline will be removed</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">    </span><span class="no">Lorem ipsum</span>
+<span class="w">    </span><span class="no">dolor sit</span>
+<span class="w">    </span><span class="no">amet</span>
+
+<span class="w">  </span><span class="c1"># formating will be preserved</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">Lorem ipsum</span>
+<span class="w">    </span><span class="no">dolor sit</span>
+<span class="w">    </span><span class="no">amet</span>
+
+
+
+<span class="w">  </span><span class="c1"># anchors literal</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;anchor-name</span><span class="w"> </span><span class="s">&quot;word&quot;</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="nv">*anchor-name</span><span class="w"> </span><span class="c1"># value will refer to anchor &amp;{ANCHOR}, giving &quot;word&quot; here</span>
+
+
+<span class="w">  </span><span class="c1"># anchoring object</span>
+<span class="w">  </span><span class="nt">base</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;anchor-name-obj</span>
+<span class="w">    </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;work&#39;</span>
+<span class="w">  </span><span class="nt">foo</span><span class="p">:</span><span class="w">  </span><span class="c1"># value will expand to anchor &amp;{ANCHOR}</span>
+<span class="w">    </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*anchor-name-obj</span>
+<span class="w">    </span><span class="nt">key2</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;word2&#39;</span>
+<span class="w">  </span><span class="c1"># giving:</span>
+<span class="w">  </span><span class="c1"># foo:</span>
+<span class="w">  </span><span class="c1">#   key: &#39;work&#39;</span>
+<span class="w">  </span><span class="c1">#   key2: &#39;word2&#39;</span>
+</pre></div>
+
+</div>
+</main>
+</body>

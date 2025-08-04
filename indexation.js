@@ -5,6 +5,11 @@ const indexation = [
     "tech": "Shell"
   },
   {
+    "id": "00001",
+    "title": "Syntaxe",
+    "tech": "Yaml"
+  },
+  {
     "id": "00000",
     "title": "Squash commits",
     "tech": "Git"
