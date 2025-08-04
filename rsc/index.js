@@ -1,9 +1,5 @@
 /* jshint esversion: 9 */
 
-function goto(id){
-    window.location.href = "/" + id;
-}
-
 function toggle_fav(element,id){
     
     const raw_favs = localStorage.getItem("favs");
@@ -93,10 +89,10 @@ function apply_tech_query(data){
 }
 
 function create_element(data){
-    let div = document.createElement("div");
-    div.id = data.id;
-    div.innerHTML = `<p class="title">${data.title}</p><p class="tech">${data.tech}</p><img onclick="toggle_fav(this,'${data.id}'); update_list()" class="favorite ${data.isfav? 'isfav' : ''}" src="rsc/assets/favorite.svg">`;
-    return div;
+    let a = document.createElement("a");
+    a.href = `/${data.id}`
+    a.innerHTML = `<p class="title">${data.title}</p><p class="tech">${data.tech}</p><img onclick="toggle_fav(this,'${data.id}'); update_list()" class="favorite ${data.isfav? 'isfav' : ''}" src="rsc/assets/favorite.svg">`;
+    return a;
 }
 
 function update_list(){
