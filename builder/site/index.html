@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>cheat-sheet</title>
+
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link rel="stylesheet" href="rsc/dark.css" id="style-ui-dark"  disabled>
+    <link rel="stylesheet" href="rsc/light.css" id="style-ui-light" disabled>
+
+    <link rel="stylesheet" href="rsc/home.css">
+    <link rel="stylesheet" href="rsc/index.css">
+
+    <script src="rsc/index.js"></script>
+    <script src="indexation.js"></script>
+
+</head>
+<script>
+    document.addEventListener("DOMContentLoaded", ()=>{
+        localStorage.setItem("ui-theme", localStorage.getItem("ui-theme") || 'dark');
+        toggle_ui();toggle_ui();
+        update_list();
+    })
+</script>
+<body onclick="document.getElementById('menu').classList.remove('focus')">
+    <header>
+        <a style="text-decoration: none" href="https://cheat-sheet.tech">
+            <img src="rsc/assets/logo.svg" alt="logo">
+            <p>cheat-sheet.tech</p>
+        </a>
+        <div id="menu" onclick="event.stopPropagation();this.classList.add('focus')">
+            <img src="rsc/assets/menu-dots.svg">
+            <div class="menu">
+                <span data-theme="light" class="hide" onclick="toggle_ui(this)"><img src="rsc/assets/bulb-on.svg"><p>Turn on the light</p></span>
+                <span data-theme="dark"  class="hide" onclick="toggle_ui(this)"><img src="rsc/assets/bulb-off.svg"><p>Turn off the light</p></span>
+                <a href="https://github.com/eloi-menaud/cheat-sheet/tree/main?tab=readme-ov-file#-add-a-cheat-sheet" style="all: unset">
+                    <span>
+                        <img src="rsc/assets/add.svg"><p>Add a cheat sheet</p>
+                    </span>
+                </a>
+                <a href="https://github.com/eloi-menaud/cheat-sheet" style="all: unset">
+                    <span>
+                        <img src="rsc/assets/github.svg"><p>Source</p>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+
+    <nav>
+        <input id="title" type="Search" placeholder="Title" oninput="update_list()"/>
+        <input id="tech"  type="Search" placeholder="Tech"  oninput="update_list()"/>
+    </nav>
+
+    <div id="result-separator">
+        <p>No result</p>
+    </div>
+
+    <main>
+    </main>
+<footer></footer>
+</body>

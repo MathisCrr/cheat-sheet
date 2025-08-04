@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>cheat-sheet</title>
+
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link rel="stylesheet" href="../rsc/dark.css" id="style-ui-dark"  disabled>
+    <link rel="stylesheet" href="../rsc/light.css" id="style-ui-light" disabled>
+
+    <script src="../rsc/index.js"></script>
+
+    <link rel="stylesheet" href="../rsc/index.css">
+    <link rel="stylesheet" href="../rsc/page.css">
+</head>
+<script>
+    document.addEventListener("DOMContentLoaded", ()=>{
+        console.log("loaded")
+        init_code_copy_event()
+        if (hasTouch()) document.body.classList.remove('has-hover')
+
+        localStorage.setItem("ui-theme", localStorage.getItem("ui-theme") || 'dark')
+        toggle_ui();toggle_ui();
+
+        let raw_favs = localStorage.getItem("favs")
+        if ((raw_favs ? raw_favs.split(",") : []).includes(document.body.id)){
+            document.querySelector("img.favorite").classList.add("isfav")
+        }
+    })
+</script>
+<body class="has-hover" onclick="document.getElementById('menu').classList.remove('focus')" id="{{page.id}}">
+
+<header>
+    <a style="text-decoration: none" href="https://cheat-sheet.tech">
+        <img src="../rsc/assets/logo.svg" alt="logo">
+        <p>cheat-sheet.tech</p>
+    </a>
+    <div id="menu" onclick="event.stopPropagation();this.classList.add('focus')">
+        <img src="../rsc/assets/menu-dots.svg">
+        <div class="menu">
+            <span data-theme="light" class="hide" onclick="toggle_ui(this)"><img src="../rsc/assets/bulb-on.svg"><p>Turn on the light</p></span>
+            <span data-theme="dark"  class="hide" onclick="toggle_ui(this)"><img src="../rsc/assets/bulb-off.svg"><p>Turn off the light</p></span>
+            <a href="https://github.com/eloi-menaud/cheat-sheet/tree/main?tab=readme-ov-file#-add-a-cheat-sheet" style="all: unset">
+                <span>
+                    <img src="../rsc/assets/add.svg"><p>Add a cheat sheet</p>
+                </span>
+            </a>
+            <hr>
+            <a href="https://github.com/eloi-menaud/cheat-sheet/edit/main/pages/{{page.tech}}/{{page.title_url}}/{{page.id}}.md" style="all: unset">
+                <span>
+                    <img src="../rsc/assets/edit.svg"><p>Edit this cheat sheet</p>
+                </span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<nav>
+    <h1 title="title">{{page.title}}</h1>
+    <p id="tech" title="tech">{{page.tech}}<p>
+    <img class="favorite" src="../rsc/assets/favorite.svg" title="favorite" onclick="toggle_fav(this,'{{page.id}}')">
+</nav>
+<main>
+    {{{content}}}
+</main>
+</body>
