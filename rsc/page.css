@@ -226,11 +226,11 @@ main{
 @keyframes flashCopied {
     0% {
         filter: filter: var(--icon-brightness);
-        content: url("../../builder/rsc/assets/copied.svg");
+        content: url("../rsc/assets/copied.svg");
     }
     100% {
         filter: filter: var(--icon-brightness);
-        content: url("../../builder/rsc/assets/copied.svg");
+        content: url("../rsc/assets/copied.svg");
     }
 }
 
