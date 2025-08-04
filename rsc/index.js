@@ -89,10 +89,14 @@ function apply_tech_query(data){
 }
 
 function create_element(data){
-    let a = document.createElement("a");
-    a.href = `/${data.id}`
-    a.innerHTML = `<p class="title">${data.title}</p><p class="tech">${data.tech}</p><img onclick="event.stopPropagation();toggle_fav(this,'${data.id}'); update_list()" class="favorite ${data.isfav? 'isfav' : ''}" src="rsc/assets/favorite.svg">`;
-    return a;
+    let div = document.createElement("div");
+    div.innerHTML = `
+<a href="/${data.id}">
+  <p class="title">${data.title}</p>
+  <p class="tech">${data.tech}</p>
+</a> 
+<img onclick="toggle_fav(this,'${data.id}'); update_list()" class="favorite ${data.isfav? 'isfav' : ''}" src="rsc/assets/favorite.svg">`;
+    return div;
 }
 
 function update_list(){

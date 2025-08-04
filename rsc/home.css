@@ -76,7 +76,7 @@ nav{
     }
 }
 
-main>a{
+main>div{
     padding: 0.5rem 1.1rem;
     display: flex;
     flex-direction: row;
@@ -87,24 +87,32 @@ main>a{
         background-color: var(--bg-2);
         cursor: pointer;
     }
-    p.title{
-        font-size: 1.1rem;
-    }
-    p.tech{
-        margin-left: auto;
-        border: 1px solid var(--border-1);
-        background-color: var(--bg-1);
-        padding: 0.25rem 0.75rem;
-        border-radius: 5px;
-        font-size: 0.85em;
-    }
-    mark{
-        background-color: transparent;
-        color: var(--main);
+
+    a{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        text-decoration: none;
+        p.title{
+            font-size: 1.1rem;
+        }
+        p.tech{
+            margin-left: auto;
+            border: 1px solid var(--border-1);
+            background-color: var(--bg-1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 5px;
+            font-size: 0.85em;
+        }
+        mark{
+            background-color: transparent;
+            color: var(--main);
+        }
     }
     img{
         margin-left: 1rem;
-        margin-right: 0;
+        margin-right: 0 !important;
     }
 }
 
