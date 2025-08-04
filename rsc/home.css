@@ -104,6 +104,7 @@ main>a{
     }
     img{
         margin-left: 1rem;
+        margin-right: 0;
     }
 }
 
