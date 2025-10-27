@@ -14,7 +14,7 @@ A collection of cheat sheets and technical guides, focused on useful content, no
 ### Standard
 All cheat sheets are based on a `{id}.md` files under `pages/`. So adding a cheat sheet on the site is simply adding a `{id}.md` file in sources.
 
-pages muste follw a specifc path :
+pages muste follow a specifc path :
 ```
 pages/{tech}/{title}/{id}.md
 ```
